@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Fetch the latest version
+latest_version=$(curl -s "https://opera-versions.flawcra.cc" | grep -oP '(?<="latest":")[^"]*')
+echo "Latest Opera Version: v${latest_version}"
+
+# Check if the version URL is valid
+url="https://get.geo.opera.com/ftp/pub/opera/desktop/${latest_version}/linux/opera-stable_${latest_version}_amd64.deb"
+response=$(wget --spider -S "$url" 2>&1 | grep "HTTP/" | awk '{print $2}')
+
+if [ "$response" -eq 404 ]; then
+  echo "The URL for version ${latest_version} (${url}) returned a 404 error. Aborting update."
+  exit 1
+else
+  echo "The URL for version ${latest_version} is valid."
+fi
+
+# Get the currently installed version of Opera
+current_version=$(opera --version 2>/dev/null)
+
+# Compare with the latest version
+if [[ "$current_version" != *"${latest_version}"* ]]; then
+  echo -e "\e[31mUpdate available: The current version ${current_version} is not the latest. Please update to ${latest_version}.\e[0m"
+  echo "Updating PKGBUILD and .srcinfo with the new version..."
+
+  # Update PKGBUILD and .srcinfo
+  cp ./PKGBUILD ./PKGBUILD.bak
+  sed -i "s/^pkgver=.*$/pkgver=${latest_version}/" ./PKGBUILD
+  makepkg --printsrcinfo > .SRCINFO
+
+  echo "Update completed."
+else
+  echo "The Opera version is up-to-date (v${current_version}). No update needed."
+fi
