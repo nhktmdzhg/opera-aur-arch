@@ -2,7 +2,7 @@
 
 # Fetch the latest version
 latest_version=$(curl -s "https://opera-versions.flawcra.cc" | grep -oP '(?<="latest":")[^"]*')
-echo "Latest Opera Version: v${latest_version}"
+echo "Latest Opera Version: ${latest_version}"
 
 # Check if the version URL is valid
 url="https://get.geo.opera.com/ftp/pub/opera/desktop/${latest_version}/linux/opera-stable_${latest_version}_amd64.deb"
