@@ -28,15 +28,9 @@ pkgbase = opera-stable-bin
 	source = https://get.geo.opera.com/ftp/pub/opera/desktop/113.0.5230.62/linux/opera-stable_113.0.5230.62_amd64.deb.sha256sum
 	source = opera
 	source = default
-	source = eula.html
-	source = terms.html
-	source = privacy.html
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5
 	sha256sums = 4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027
-	sha256sums = 7eeb500cd0ad552e02483dbc56bd493755254ff63a4aa1bc72a08c65e5bc152a
-	sha256sums = 1472b417c7a338d176984866ce775cafd8055907996010ce4a60a454bdfb18d5
-	sha256sums = 4c92cab6658580bcdb9ab72dd1c4262a54ffeeb799ba4339be4d201c18e882ce
 
 pkgname = opera-stable-bin

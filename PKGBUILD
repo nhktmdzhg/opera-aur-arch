@@ -19,18 +19,12 @@ source=(
     "https://get.geo.opera.com/ftp/pub/${_pkgname}/desktop/${pkgver}/linux/${_pkgname}-stable_${pkgver}_amd64.deb.sha256sum"
     "opera"
     "default"
-    'eula.html'
-    'terms.html'
-    'privacy.html'
 )
 
 sha256sums=('SKIP'
             'SKIP'
             '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
-            '4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027'
-            '7eeb500cd0ad552e02483dbc56bd493755254ff63a4aa1bc72a08c65e5bc152a'
-            '1472b417c7a338d176984866ce775cafd8055907996010ce4a60a454bdfb18d5'
-            '4c92cab6658580bcdb9ab72dd1c4262a54ffeeb799ba4339be4d201c18e882ce')
+            '4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027')
 
 prepare() {
     sed -e "s/%pkgname%/$_pkgname/g" -i "$srcdir/opera"
@@ -73,19 +67,4 @@ package() {
     install -Dm644 \
         "$pkgdir/usr/share/doc/${_pkgname}-stable/copyright" \
         "$pkgdir/usr/share/licenses/$_pkgname/copyright"
-
-    # eula
-    install -Dm644 \
-        "$srcdir/eula.html" \
-        "$pkgdir/usr/share/licenses/$_pkgname/eula.html"
-
-    # terms
-    install -Dm644 \
-        "$srcdir/terms.html" \
-        "$pkgdir/usr/share/licenses/$_pkgname/terms.html"
-
-    # privacy
-    install -Dm644 \
-        "$srcdir/privacy.html" \
-        "$pkgdir/usr/share/licenses/$_pkgname/privacy.html"
 }
