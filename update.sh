@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Fetch the latest version
-latest_version=$(curl -s "https://opera-versions.flawcra.cc" | grep -oP '(?<="latest":")[^"]*')
+latest_version=$(curl -s https://get.geo.opera.com/ftp/pub/opera/desktop/ | grep -Po 'href="\K[0-9.]+' | sort -V | tail -1)
 echo "Latest Opera Version: ${latest_version}"
 
 # Check if the version URL is valid
@@ -28,7 +28,10 @@ if [[ "$current_version" != *"${latest_version}"* ]]; then
   sed -i "s/^pkgver=.*$/pkgver=${latest_version}/" ./PKGBUILD
   makepkg --printsrcinfo > .SRCINFO
 
-  echo "Update completed."
+  echo "Edit the PKGBUILD file successfully."
+  echo "Now we update this package."
+  pikaur -Pi
+  echo "Update successfully, so PEAK!"
 else
-  echo "The Opera version is up-to-date (v${current_version}). No update needed."
+  echo "The Opera version is up-to-date (${current_version}). No update needed."
 fi

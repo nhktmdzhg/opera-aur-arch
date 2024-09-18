@@ -1,6 +1,6 @@
 pkgname=opera-stable-bin
 _pkgname=opera
-pkgver=113.0.5230.62
+pkgver=113.0.5230.86
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
@@ -41,6 +41,14 @@ check() {
 
     # check sha256sum of the deb file
     sha256sum -c "${_pkgname}-stable_${pkgver}_amd64.deb.sha256sum.withname"
+
+    if [ $? -ne 0 ]; then
+        echo "Checksum failed"
+        exit 1
+    fi
+    else
+        echo "Checksum passed. PEAK NHK"
+    fi
 }
 
 package() {
