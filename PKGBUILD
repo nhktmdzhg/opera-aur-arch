@@ -1,6 +1,6 @@
 pkgname=opera-stable-bin
 _pkgname=opera
-pkgver=113.0.5230.86
+pkgver=114.0.5282.21
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
@@ -45,7 +45,6 @@ check() {
     if [ $? -ne 0 ]; then
         echo "Checksum failed"
         exit 1
-    fi
     else
         echo "Checksum passed. PEAK NHK"
     fi
@@ -70,9 +69,4 @@ package() {
     # install opera wrapper
     rm "$pkgdir/usr/bin/$_pkgname"
     install -Dm755 "$srcdir/opera" "$pkgdir/usr/bin/$_pkgname"
-
-    # license
-    install -Dm644 \
-        "$pkgdir/usr/share/doc/${_pkgname}-stable/copyright" \
-        "$pkgdir/usr/share/licenses/$_pkgname/copyright"
 }

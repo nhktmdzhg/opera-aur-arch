@@ -24,6 +24,8 @@ if [[ "$current_version" != *"${latest_version}"* ]]; then
   echo "Updating PKGBUILD and .srcinfo with the new version..."
 
   # Update PKGBUILD and .srcinfo
+  curr_folder=$(pwd)
+  cd ~/Documents/opera-arch/opera-aur-arch
   cp ./PKGBUILD ./PKGBUILD.bak
   sed -i "s/^pkgver=.*$/pkgver=${latest_version}/" ./PKGBUILD
   makepkg --printsrcinfo > .SRCINFO
@@ -32,6 +34,7 @@ if [[ "$current_version" != *"${latest_version}"* ]]; then
   echo "Now we update this package."
   pikaur -Pi
   echo "Update successfully, so PEAK!"
+  cd $curr_folder
 else
   echo "The Opera version is up-to-date (${current_version}). No update needed."
 fi
