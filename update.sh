@@ -21,6 +21,12 @@ current_version=$(opera --version 2>/dev/null)
 # Compare with the latest version
 if [[ "$current_version" != *"${latest_version}"* ]]; then
   echo -e "\e[31mUpdate available: The current version ${current_version} is not the latest. Please update to ${latest_version}.\e[0m"
+  read -p "Do you want to update Opera now? (y/n) " reply
+  echo
+  if [[ ! "$reply" =~ ^[Yy]$ ]]; then
+    echo "Aborting update."
+    exit 1
+  fi
   echo "Updating PKGBUILD and .srcinfo with the new version..."
 
   # Update PKGBUILD and .srcinfo
@@ -34,7 +40,7 @@ if [[ "$current_version" != *"${latest_version}"* ]]; then
   echo "Now we update this package."
   pikaur -Pi
   echo "Update successfully, so PEAK!"
-  cd $curr_folder
+  cd "$curr_folder" || exit 1
 else
   echo "The Opera version is up-to-date (${current_version}). No update needed."
 fi

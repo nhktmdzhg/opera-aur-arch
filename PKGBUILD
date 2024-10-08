@@ -1,6 +1,6 @@
 pkgname=opera-stable-bin
 _pkgname=opera
-pkgver=114.0.5282.21
+pkgver=114.0.5282.86
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
@@ -9,6 +9,7 @@ license=('custom:opera')
 backup=("etc/$_pkgname/default")
 arch=('x86_64')
 conflicts=('opera')
+install=opera-stable-bin.install
 depends=('gtk3' 'qt6-base' 'qt5-base' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libcups' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 optdepends=(
     'opera-ffmpeg-codecs: playback of proprietary video/audio'
