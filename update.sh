@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Fetch the latest version
 latest_version=$(curl -s https://get.geo.opera.com/ftp/pub/opera/desktop/ | grep -Po 'href="\K[0-9.]+' | sort -V | tail -1)

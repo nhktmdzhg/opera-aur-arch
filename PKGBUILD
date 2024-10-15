@@ -1,6 +1,6 @@
 pkgname=opera-stable-bin
 _pkgname=opera
-pkgver=114.0.5282.86
+pkgver=114.0.5282.102
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
